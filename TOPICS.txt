@@ -1,0 +1,1 @@
+python fastapi clean-architecture domain-driven-design postgresql sqlalchemy docker poetry

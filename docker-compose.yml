@@ -1,0 +1,28 @@
+services:
+  web:
+    ports:
+      - ${APPLICATION_PORTS}
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/postgres
+      DATABASE_HOST: ${DATABASE_HOST:-}
+      DATABASE_PORT: ${DATABASE_PORT:-}
+      DATABASE_USER: ${DATABASE_USER:-}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-}
+      DATABASE_NAME: ${DATABASE_NAME:-}
+
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-}
+      POSTGRES_DB: ${DATABASE_NAME:-}
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+      PGTZ: "Europe/Moscow"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:
