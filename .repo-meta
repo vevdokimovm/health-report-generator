@@ -1,0 +1,2 @@
+description=Сервис сбора показателей здоровья и генерации персональных отчётов: чистая архитектура, Docker, Poetry
+topics=python,fastapi,clean-architecture,domain-driven-design,postgresql,sqlalchemy,docker,poetry
